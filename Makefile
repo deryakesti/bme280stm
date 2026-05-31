@@ -41,6 +41,7 @@ C_SRCS  = Src/main.c \
           Src/i2c.c \
           Src/bme280.c \
           Src/usart.c \
+          Src/delay.c \
           Src/system_stm32f4xx.c
 
 AS_SRCS = Startup/startup_stm32f407vgtx.s

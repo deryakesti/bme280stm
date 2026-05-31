@@ -3,14 +3,7 @@
 #include "i2c.h"
 #include "bme280.h"
 #include "usart.h"
-
-static void delay_ms(volatile uint32_t ms)
-{
-    while (ms--) {
-        volatile uint32_t c = 42000U;
-        while (c--) { __asm("nop"); }
-    }
-}
+#include "delay.h"
 
 int main(void)
 {
