@@ -147,7 +147,7 @@ uint8_t BME280_Init(void)
     /* We use normal mode here: t_os=x2, p_os=x4, h_os=x1
        config: standby 500ms, filter off                         */
     if (write_reg(REG_CONFIG,    0xA0)) return 6;  /* t_sb=1000ms, filter=off */
-    if (write_reg(REG_CTRL_MEAS, 0x57)) return 7;  /* t_os=x2, p_os=x4, normal */
+    if (write_reg(REG_CTRL_MEAS, 0x57)) return 7;  /* osrs_t=x2, osrs_p=x16, normal mode */
 
     delay_ms(100);
     return 0;
