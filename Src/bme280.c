@@ -1,5 +1,6 @@
 #include "bme280.h"
 #include "i2c.h"
+#include "delay.h"
 #include <stdint.h>
 
 /* ── Register addresses ────────────────────────────────────────────── */
@@ -40,15 +41,6 @@ static uint8_t read_reg(uint8_t reg, uint8_t *val)
 static uint8_t write_reg(uint8_t reg, uint8_t val)
 {
     return I2C1_Write(BME280_ADDR, reg, &val, 1);
-}
-
-static void delay_ms(volatile uint32_t ms)
-{
-    /* Rough busy-wait at ~168 MHz: ~42000 cycles/ms */
-    while (ms--) {
-        volatile uint32_t c = 42000U;
-        while (c--) { __asm("nop"); }
-    }
 }
 
 /* ── Trim register loading ─────────────────────────────────────────── */
